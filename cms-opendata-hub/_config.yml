@@ -1,0 +1,41 @@
+title: CMS Open Data for Education and Research
+tagline: Find something you can actually use on Monday.
+description: >-
+  A curated index of classroom activities, tutorials, and research pathways
+  built on CMS open data. Maintained by the CMS DPOA group.
+
+# Change this when the site moves to its final home.
+url: "https://cms-opendata-education.github.io"
+baseurl: "/hub"
+
+contact_email: cms-dpoa-coordinator@cern.ch
+repo: https://github.com/cms-opendata-education/hub
+
+collections:
+  resources:
+    output: true
+    permalink: /resource/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+
+# GitHub Pages supports these natively. Do not add plugins outside the
+# supported list unless you are prepared to build with an Action instead.
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - bin/
+  - README.md
+  - CONTRIBUTING.md
+  - preview.html
+  - Gemfile
+  - Gemfile.lock
+
+sass:
+  style: compressed

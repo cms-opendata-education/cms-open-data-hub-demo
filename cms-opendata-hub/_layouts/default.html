@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} &middot; {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.summary | default: site.description | strip_newlines }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="masthead__title" href="{{ '/' | relative_url }}">CMS Open Data<span>&nbsp;/</span>&nbsp;Hub</a>
+    <nav class="masthead__nav">
+      <a href="{{ '/browse/' | relative_url }}">Browse</a>
+      <a href="{{ '/data/' | relative_url }}">Data</a>
+      <a href="{{ '/contribute/' | relative_url }}">Contribute</a>
+    </nav>
+  </div>
+</header>
+
+{{ content }}
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <span>Maintained by the CMS DPOA group.</span>
+    <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+    <a href="{{ site.repo }}">Site source</a>
+    <a href="https://opendata.cern.ch/">CERN Open Data Portal</a>
+    <a href="https://cms-opendata-guide.web.cern.ch/">CMS Open Data Guide</a>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/catalog.js' | relative_url }}"></script>
+</body>
+</html>

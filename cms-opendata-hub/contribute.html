@@ -1,0 +1,52 @@
+---
+layout: default
+title: Add a resource
+permalink: /contribute/
+---
+<div class="wrap" style="max-width:760px;padding-top:44px;padding-bottom:64px">
+  <h1>Add something to the index</h1>
+  <p style="font-size:1.1rem;color:var(--ink-2)">
+    If you have built an activity, translated one, or found a good one that is
+    not listed, we want it here. You do not have to host it with us and you do
+    not have to hand it over &mdash; the index points at wherever it already lives.
+  </p>
+
+  <p class="section-rule">The two-minute way</p>
+  <p>
+    <a class="btn" href="{{ site.repo }}/issues/new?template=new-resource.yml">Fill in the form</a>
+  </p>
+  <p>
+    A short GitHub issue form asks for the same handful of fields you see on every
+    resource page. A maintainer turns it into a record. You need a GitHub account
+    but nothing else. If you would rather not, email
+    <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a> and we
+    will do the typing.
+  </p>
+
+  <p class="section-rule">The direct way</p>
+  <p>
+    Add one file to <code>_resources/</code> and open a pull request. The file is
+    YAML front matter followed by a few paragraphs of description. Automated checks
+    will tell you if a field is missing or a term is not in the vocabulary, so you
+    do not need to memorise the schema. Copy an existing record and edit it.
+  </p>
+
+  <p class="section-rule">What we will and will not list</p>
+  <ul>
+    <li>It has to be openly available, with no login and no fee.</li>
+    <li>It has to use CMS open data, or teach something you need in order to use it.</li>
+    <li>It does not have to be finished, polished, or maintained. Unmaintained
+        material is labelled as such and stays listed, because a rough activity
+        someone can find beats a perfect one they cannot.</li>
+    <li>We will not rewrite documentation that already exists elsewhere. If the
+        Portal or the Guide covers it, we link to it.</li>
+  </ul>
+
+  <p class="section-rule">Tell us how it went</p>
+  <p>
+    The most useful thing you can add is not a new activity but a paragraph about
+    running an existing one: what you cut, what confused students, how long it
+    really took. <a href="{{ site.repo }}/issues/new?template=testimonial.yml">Share
+    that here.</a>
+  </p>
+</div>

@@ -1,0 +1,173 @@
+# Controlled vocabularies.
+# Every value used in a resource record must appear here. CI enforces this.
+# To add a term: open a PR adding it here, with a one-line label.
+
+status:
+  - id: active
+    label: Active
+    note: Maintained, verified recently.
+  - id: community
+    label: Community
+    note: Works, but no one has formally signed up to maintain it.
+  - id: unmaintained
+    label: Unmaintained
+    note: Still listed and still usable, but expect rough edges.
+  - id: archived
+    label: Archived
+    note: Kept for the record. Hidden from search by default.
+
+audience:
+  - id: middle-school
+    label: Middle school
+  - id: high-school
+    label: High school
+  - id: undergrad-intro
+    label: Undergraduate, introductory
+  - id: undergrad-advanced
+    label: Undergraduate, advanced
+  - id: graduate
+    label: Graduate
+  - id: researcher
+    label: Researcher
+  - id: teacher-development
+    label: Teacher professional development
+  - id: general-public
+    label: General public
+
+# Ordered ladder, least effort first. `level` drives the browse slider and the
+# rung indicator. Reorder or insert a rung by editing this list; nothing else
+# in the site hardcodes it.
+setup_burden:
+  - id: none
+    level: 0
+    label: No computer needed
+    note: Paper, puzzles, or printed materials. Works when the lab machines do not.
+  - id: web-app
+    level: 1
+    label: Web page only
+    note: Opens in any browser. No account, no login, nothing to install.
+  - id: spreadsheet
+    level: 2
+    label: Spreadsheet
+    note: Excel, Google Sheets, or LibreOffice.
+  - id: cloud-notebook
+    level: 3
+    label: Cloud notebook
+    note: Binder needs nothing. Colab needs a Google account, which some schools block.
+  - id: local-python
+    level: 4
+    label: Local Python
+    note: Someone installs Python and a few packages on each machine.
+  - id: local-root
+    level: 5
+    label: Local ROOT
+    note: Needs a working ROOT installation.
+  - id: cmssw
+    level: 6
+    label: CMSSW
+    note: Container or virtual machine running the CMS software stack.
+
+data_format:
+  - id: none
+    label: No data files
+  - id: csv
+    label: CSV
+  - id: spreadsheet
+    label: Spreadsheet
+  - id: event-display
+    label: Event display
+  - id: nanoaod
+    label: NanoAOD
+  - id: miniaod
+    label: MiniAOD
+  - id: aod
+    label: AOD
+  - id: simulation
+    label: Simulation
+
+physics_topic:
+  - id: special-relativity
+    label: Special relativity
+  - id: invariant-mass
+    label: Invariant mass
+  - id: conservation-laws
+    label: Conservation laws
+  - id: standard-model
+    label: Standard Model
+  - id: quarks-hadrons
+    label: Quarks and hadrons
+  - id: detectors
+    label: Detectors and reconstruction
+  - id: jets
+    label: Jets
+  - id: higgs
+    label: Higgs boson
+  - id: statistics
+    label: Statistics and uncertainty
+
+computing_topic:
+  - id: no-coding
+    label: No coding
+  - id: spreadsheets
+    label: Spreadsheets
+  - id: python-basics
+    label: Python basics
+  - id: pandas
+    label: pandas
+  - id: awkward
+    label: awkward arrays
+  - id: uproot
+    label: uproot
+  - id: matplotlib
+    label: Plotting with matplotlib
+  - id: root
+    label: ROOT
+  - id: matlab
+    label: MATLAB
+  - id: r
+    label: R
+  - id: machine-learning
+    label: Machine learning
+  - id: containers
+    label: Containers and Docker
+
+# Cross-cutting labels that do not fit the axes above.
+tag:
+  - id: hands-on-materials
+    label: Hands-on physical materials
+  - id: multilingual
+    label: Available in several languages
+  - id: instructor-guide
+    label: Has an instructor guide
+  - id: research-pathway
+    label: Research pathway
+  - id: reference
+    label: Reference documentation
+  - id: web-app
+    label: Web app
+
+link_type:
+  - id: homepage
+    label: Main page
+  - id: repo
+    label: Source repository
+  - id: colab
+    label: Open in Colab
+  - id: binder
+    label: Open in Binder
+  - id: lesson
+    label: Lesson page
+  - id: slides
+    label: Slides
+  - id: video
+    label: Video
+  - id: instructor
+    label: Instructor version
+  - id: solutions
+    label: Solutions
+  - id: portal
+    label: CERN Open Data Portal
+  - id: reference
+    label: Reference documentation
+  - id: paper
+    label: Paper

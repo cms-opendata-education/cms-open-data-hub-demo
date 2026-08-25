@@ -1,0 +1,31 @@
+# Keyed by resource id. Each entry is one person's account of using it.
+# These come in through the "Share how you used this" issue form or the
+# Google Form, and are added by a maintainer. Lower review bar than a
+# resource record: check it is real and not defamatory, then merge.
+
+particle-physics-playground:
+  - name: Katie Salvatore
+    role: High school physics teacher
+    date: 2026-07-29
+    text: >
+      I used this with a regular-level physics class, not honours. I spent one
+      period on the four-vector paper strips before anyone touched a computer,
+      and that made the difference. Without it the notebook is just typing.
+
+spreadsheet-activities:
+  - name: Workshop participant
+    role: Community college instructor
+    date: 2026-07-30
+    text: >
+      My students do not have laptops and our lab machines are locked down.
+      This was the only activity at the workshop I could actually run in
+      September. I had no idea it existed.
+
+particle-discovery-lab:
+  - name: Workshop participant
+    role: Undergraduate lab coordinator
+    date: 2026-07-30
+    text: >
+      Ran the full three-period version with sixteen students. The background
+      subtraction step is where they struggle, and it is worth budgeting a
+      whole period for it rather than rushing.

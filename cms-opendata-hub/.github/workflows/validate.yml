@@ -1,0 +1,36 @@
+name: Validate records
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 1 * *"   # monthly link check
+
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: python bin/validate.py
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --accept 200,206,403,429 '_resources/**/*.md' '_data/*.yml'
+          fail: false
+          output: link-report.md
+      - name: Open an issue if links are broken
+        if: github.event_name == 'schedule'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Broken links found in the monthly check
+          content-filepath: link-report.md
+          labels: link-rot
