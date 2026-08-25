@@ -16,7 +16,7 @@ permalink: /catalog.json
 {% endfor %}],
 "resources": [
 {% for r in site.resources %}  {
-    "id": {{ r.slug | jsonify }},
+    "id": {{ r.path | split: "/" | last | remove: ".md" | jsonify }},
     "url": {{ r.url | relative_url | jsonify }},
     "title": {{ r.title | jsonify }},
     "summary": {{ r.summary | strip_newlines | jsonify }},

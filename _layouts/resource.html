@@ -6,7 +6,8 @@ layout: default
 {% for s in ladder %}{% if s.id == page.setup_burden %}{% assign level = forloop.index0 %}{% endif %}{% endfor %}
 {% assign burden = site.data.vocab.setup_burden | where: "id", page.setup_burden | first %}
 {% assign statusinfo = site.data.vocab.status | where: "id", page.status | first %}
-{% assign quotes = site.data.testimonials[page.slug] %}
+{% assign docid = page.path | split: "/" | last | remove: ".md" %}
+{% assign quotes = site.data.testimonials[docid] %}
 
 <div class="wrap rsc">
 

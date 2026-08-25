@@ -35,16 +35,21 @@
 <script src="{{ '/assets/js/catalog.js' | relative_url }}"></script>
 <script>
 /* If the stylesheet did not load, the page renders as unstyled text and the
-   cause is almost always a baseurl mismatch. Say so rather than leaving the
-   maintainer to guess. */
+   cause is almost always a baseurl mismatch. Work out the value that would be
+   correct and print it, rather than leaving the maintainer to guess. */
 (function () {
   if (getComputedStyle(document.documentElement).getPropertyValue("--cms").trim()) return;
+  var seg = window.location.pathname.split("/").filter(Boolean)[0];
+  var want = seg ? "/" + seg : "";
   var b = document.createElement("div");
   b.style.cssText = "background:#b3121f;color:#fff;padding:14px 18px;" +
-    "font:13px/1.5 ui-monospace,Menlo,Consolas,monospace";
-  b.textContent = "The stylesheet did not load, so this page is unstyled. " +
-    "baseurl in _config.yml does not match where the site is being served from (" +
-    window.location.pathname + "). See the deployment section of README.md.";
+    "font:13px/1.6 ui-monospace,Menlo,Consolas,monospace";
+  b.innerHTML = "<strong>The stylesheet did not load, so this page is unstyled.</strong><br>" +
+    "Fix it either way:<br>" +
+    "&nbsp;&nbsp;1. Settings &rsaquo; Pages &rsaquo; Source &rsaquo; GitHub Actions " +
+    "(then delete nothing, the workflow handles this), or<br>" +
+    "&nbsp;&nbsp;2. set <code>baseurl: \"" + want + "\"</code> in _config.yml " +
+    "and delete .github/workflows/pages.yml.";
   document.body.insertBefore(b, document.body.firstChild);
 })();
 </script>

@@ -38,6 +38,9 @@ plugins:
   - jekyll-sitemap
 
 exclude:
+  # bundler installs gems here; without this Jekyll tries to build them
+  - vendor
+  - .bundle
   - bin/
   - README.md
   - CONTRIBUTING.md

@@ -14,10 +14,8 @@ permalink: /data/
   {% for pair in site.data.datasets %}
     {% assign key = pair[0] %}
     {% assign d = pair[1] %}
-    {% assign users = "" | split: "" %}
-    {% for r in site.resources %}
-      {% if r.data.datasets %}{% if r.data.datasets contains key %}{% assign users = users | push: r %}{% endif %}{% endif %}
-    {% endfor %}
+    {% assign n = 0 %}
+    {% for r in site.resources %}{% if r.data.datasets %}{% if r.data.datasets contains key %}{% assign n = n | plus: 1 %}{% endif %}{% endif %}{% endfor %}
     <div id="{{ key }}" style="background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px 24px;margin:18px 0">
       <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
         <h2 style="margin:0">{{ d.title }}</h2>
@@ -28,10 +26,12 @@ permalink: /data/
       <p style="color:var(--ink-2);margin:12px 0 14px">{{ d.blurb }}</p>
       <p style="margin:0 0 14px"><a href="{{ d.portal }}">Documentation on the Open Data Portal &rarr;</a></p>
 
-      {% if users.size > 0 %}
+      {% if n > 0 %}
       <div style="border-top:1px solid var(--rule-soft);padding-top:12px;font-family:var(--f-mono);font-size:.76rem">
         <span style="color:var(--ink-3)">used by</span>
-        {% for u in users %}<a href="{{ u.url | relative_url }}">{{ u.title }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor %}
+        {% for r in site.resources %}{% if r.data.datasets %}{% if r.data.datasets contains key %}
+        <a href="{{ r.url | relative_url }}" style="margin-right:12px">{{ r.title }}</a>
+        {% endif %}{% endif %}{% endfor %}
       </div>
       {% endif %}
     </div>
