@@ -1,0 +1,49 @@
+title: CMS Open Data for Education and Research
+tagline: Find something you can actually use on Monday.
+description: >-
+  A curated index of classroom activities, tutorials, and research pathways
+  built on CMS open data. Maintained by the CMS DPOA group.
+
+# Leave both of these empty.
+#
+# The deploy workflow in .github/workflows/pages.yml passes the correct
+# baseurl at build time, worked out from the repository name. Setting it
+# here as well will override that and break every stylesheet and link.
+#
+# Only set baseurl by hand if you are using Settings > Pages > "Deploy from
+# a branch" instead of the workflow. In that case it must be "/<repo-name>"
+# for a project site, or "" for a <org>.github.io repository.
+url: ""
+baseurl: ""
+
+contact_email: cms-dpoa-coordinator@cern.ch
+repo: https://github.com/cms-opendata-education/hub
+
+collections:
+  resources:
+    output: true
+    permalink: /resource/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+
+# GitHub Pages supports these natively. Do not add plugins outside the
+# supported list unless you are prepared to build with an Action instead.
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - bin/
+  - README.md
+  - CONTRIBUTING.md
+  - preview.html
+  - Gemfile
+  - Gemfile.lock
+
+sass:
+  style: compressed

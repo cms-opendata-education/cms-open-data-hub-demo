@@ -1,0 +1,38 @@
+---
+layout: null
+permalink: /catalog.json
+---
+{
+"vocab": {
+  "audience": [
+{% for a in site.data.vocab.audience %}    { "id": {{ a.id | jsonify }}, "label": {{ a.label | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endfor %}  ],
+  "status": [
+{% for s in site.data.vocab.status %}    { "id": {{ s.id | jsonify }}, "label": {{ s.label | jsonify }}, "note": {{ s.note | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endfor %}  ]
+},
+"ladder": [
+{% for s in site.data.vocab.setup_burden %}  { "id": {{ s.id | jsonify }}, "label": {{ s.label | jsonify }}, "note": {{ s.note | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endfor %}],
+"resources": [
+{% for r in site.resources %}  {
+    "id": {{ r.slug | jsonify }},
+    "url": {{ r.url | relative_url | jsonify }},
+    "title": {{ r.title | jsonify }},
+    "summary": {{ r.summary | strip_newlines | jsonify }},
+    "status": {{ r.status | jsonify }},
+    "last_verified": {{ r.last_verified | jsonify }},
+    "audience": {{ r.audience | jsonify }},
+    "languages": {{ r.languages | jsonify }},
+    "setup_burden": {{ r.setup_burden | jsonify }},
+    "duration": {{ r.duration | jsonify }},
+    "physics_topics": {{ r.physics_topics | jsonify }},
+    "computing_topics": {{ r.computing_topics | jsonify }},
+    "tags": {{ r.tags | jsonify }},
+    "instructor_materials": {{ r.instructor_materials | jsonify }},
+    "data": {{ r.data | jsonify }},
+    "learning_goals": {{ r.learning_goals | jsonify }},
+    "description_text": {{ r.content | strip_html | strip_newlines | truncate: 1200 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}]
+}

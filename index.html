@@ -1,0 +1,132 @@
+---
+layout: default
+---
+<div class="wrap hero">
+  <h1 class="hero__lead">Your students can make this plot.</h1>
+
+  {% include spectrum.html %}
+  <p class="spectrum__caption">
+    Every muon pair CMS has ever recorded, sorted by mass. Nearly every activity
+    indexed here builds toward some part of it.
+  </p>
+
+  <p class="hero__sub">
+    CMS has released petabytes of collision data, and hundreds of people have
+    built things with it. The hard part was never the data &mdash; it was finding
+    the one activity that fits your students, your equipment, and the ninety
+    minutes you actually have. This is an index of what exists, wherever it lives.
+  </p>
+
+  <div class="doors">
+    <a class="door" href="{{ '/browse/?audience=high-school&audience=undergrad-intro&audience=undergrad-advanced' | relative_url }}">
+      <span class="door__eyebrow">Teaching</span>
+      <p class="door__title">I want an activity for my students</p>
+      <p class="door__body">
+        Twenty minutes to three lab periods. Filter by how much setup you can
+        realistically do before class.
+      </p>
+    </a>
+    <a class="door" href="{{ '/browse/?audience=graduate&audience=researcher' | relative_url }}">
+      <span class="door__eyebrow">Research</span>
+      <p class="door__title">I want to analyse the data properly</p>
+      <p class="door__body">
+        Pathways into the official CMS documentation, arranged by what you are
+        trying to do rather than by file format.
+      </p>
+    </a>
+  </div>
+
+  <div class="chooser">
+    <h2 style="margin-bottom:4px">Not sure where to start?</h2>
+    <p style="color:var(--ink-2);font-size:.95rem;margin:0 0 22px">
+      Three questions. We will show you what fits.
+    </p>
+
+    <div class="chooser__q">
+      <span class="chooser__label">Who are your students?</span>
+      <div class="segmented" data-q="audience">
+        <button type="button" data-value="high-school">High school</button>
+        <button type="button" data-value="undergrad-intro">First-year undergrad</button>
+        <button type="button" data-value="undergrad-advanced">Advanced undergrad</button>
+        <button type="button" data-value="graduate">Graduate and up</button>
+      </div>
+    </div>
+
+    <div class="chooser__q">
+      <span class="chooser__label">How much class time?</span>
+      <div class="segmented" data-q="duration">
+        <button type="button" data-value="0">Half a period</button>
+        <button type="button" data-value="1">One period</button>
+        <button type="button" data-value="2">Two periods</button>
+        <button type="button" data-value="4">A full project</button>
+      </div>
+    </div>
+
+    <div class="chooser__q">
+      <span class="chooser__label">What can your students actually run?</span>
+      <div class="segmented" data-q="setup">
+        <button type="button" data-value="0">No reliable computers</button>
+        <button type="button" data-value="1">A web browser</button>
+        <button type="button" data-value="2">A spreadsheet</button>
+        <button type="button" data-value="3">Notebooks in the cloud</button>
+        <button type="button" data-value="6">Anything I set up for them</button>
+      </div>
+    </div>
+
+    <a class="btn" id="chooserGo" href="{{ '/browse/' | relative_url }}">Show me what fits</a>
+  </div>
+
+  <div class="newhere">
+    <h2>First time here?</h2>
+    <ol>
+      <li><strong>You do not need to know any particle physics to start.</strong>
+        Several activities are written for students who have never heard of a
+        muon, and a few need no computer at all.</li>
+      <li><strong>You do not need permission or an account.</strong> Everything
+        indexed here is openly licensed. Copy it, cut it up, rewrite it for your
+        class.</li>
+      <li><strong>Start smaller than you think.</strong> Most people who try to
+        run a full analysis in week one give up. A twenty-minute event display
+        activity that works is worth more than a three-week project that stalls.</li>
+    </ol>
+  </div>
+
+  <p class="section-rule">What teachers said after using these</p>
+  <div class="voices">
+    <blockquote class="voice">
+      <p>My students do not have laptops and our lab machines are locked down.
+      This was the only activity at the workshop I could actually run in
+      September. I had no idea it existed.</p>
+      <cite>Community college instructor</cite>
+    </blockquote>
+    <blockquote class="voice">
+      <p>I spent one period on the four-vector paper strips before anyone
+      touched a computer, and that made the difference. Without it the notebook
+      is just typing.</p>
+      <cite>Katie Salvatore, high school physics teacher</cite>
+    </blockquote>
+  </div>
+</div>
+
+<script>
+(function () {
+  var picks = {};
+  var base = "{{ '/browse/' | relative_url }}";
+  document.querySelectorAll(".segmented").forEach(function (group) {
+    var key = group.getAttribute("data-q");
+    group.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        group.querySelectorAll("button").forEach(function (o) {
+          o.setAttribute("aria-pressed", o === b ? "true" : "false");
+        });
+        picks[key] = b.getAttribute("data-value");
+        var p = new URLSearchParams();
+        if (picks.audience) p.append("audience", picks.audience);
+        if (picks.duration) p.append("duration", picks.duration);
+        if (picks.setup) p.append("setup", picks.setup);
+        document.getElementById("chooserGo").setAttribute("href", base + "?" + p.toString());
+      });
+    });
+  });
+})();
+</script>

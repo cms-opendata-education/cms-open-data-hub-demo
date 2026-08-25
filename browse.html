@@ -1,0 +1,31 @@
+---
+layout: default
+title: Browse
+permalink: /browse/
+---
+<div class="wrap" style="padding-top:34px">
+  <h1 style="margin-bottom:6px">Browse the catalog</h1>
+  <p style="color:var(--ink-2);max-width:60ch;margin:0">
+    Drag the setup slider down to see what is left for a teacher with no
+    reliable computers.
+  </p>
+</div>
+
+<!-- The sidebar and the cards are both rendered by assets/js/catalog.js from
+     catalog.json. Keeping the markup here to a shell means this page and the
+     offline preview run the same code, so they cannot drift apart. -->
+<div class="wrap browse" data-catalog="{{ '/catalog.json' | relative_url }}">
+  <div class="filters">
+    <button class="filters__toggle" type="button">Filters</button>
+    <div class="filters__panel"></div>
+  </div>
+  <div>
+    <input class="search-box" type="search" id="q"
+           placeholder="Search titles, topics, and goals" aria-label="Search resources">
+    <div class="results__bar">
+      <span id="resultCount"></span>
+      <button class="linkish" id="reset" type="button">Clear filters</button>
+    </div>
+    <div class="cards" id="results"></div>
+  </div>
+</div>
