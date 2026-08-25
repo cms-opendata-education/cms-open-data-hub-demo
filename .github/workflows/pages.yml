@@ -1,0 +1,62 @@
+# Builds and deploys the site to GitHub Pages.
+#
+# Use this instead of the Settings > Pages "Deploy from a branch" option. Two
+# reasons: `configure-pages` works out the correct baseurl from the repository
+# name automatically, which removes the single most common way to break this
+# site, and a failed build shows up as a red X with a full log instead of
+# silently serving the previous version.
+#
+# To switch on: Settings > Pages > Source > GitHub Actions.
+
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Check records before building
+        run: |
+          pip install pyyaml
+          python bin/validate.py
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
