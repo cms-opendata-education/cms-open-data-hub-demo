@@ -35,7 +35,8 @@ links:
 ---
 
 The puzzle pieces are shaped so that only physically allowed hadrons can be
-assembled. Students discover the colour-neutrality rule by finding out which
+assembled. That is, if the pieces don't fit together, then that means that those particles are
+not found in Nature. Students discover the colour-neutrality rule by finding out which
 arrangements refuse to fit, rather than by being told.
 
 Available as printable paper, 3D-printable STL files, laser-cutter files for
